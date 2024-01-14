@@ -214,7 +214,7 @@
                 <div class="ctrlSubgrp firstCtrlSubgrp">
                     <p>
                         <button type="button" id="start" onclick="setAt('start');">Start</button>
-                        <img src="http://supermemory.info/iv/transparent.png" alt="" id="rewindStart" class="imgBtn rewind" onclick="move('start', 'rewind');" />
+                        <img src="/images/transparent.png" alt="" id="rewindStart" class="imgBtn rewind" onclick="move('start', 'rewind');" />
                         <input type="text" value="0:00:00" id="startvideoat" onfocus="this.select();" onchange="this.value = convertDuration2HHMMSS(convertHHMMSS2Duration(this.value)); document.getElementById('imposeboundries').value = 0; updateBorder(this);" ondblclick="resetAt('start');" />
                         <img src="/images/transparent.png" alt="" id="forwardStart" class="imgBtn forward" onclick="move('start', 'forward');" />
                         <img src="/images/transparent.png" alt="Go to" title="Go to" id="goToStart" class="imgBtn goTo" onclick="goTo('start');" />
@@ -281,7 +281,7 @@
                     oExtracts.options[oExtracts.options.length] = oNewOpt;
                     oExtracts.selectedIndex = oExtracts.options.length - 1;
                     oExtracts.disabled = false;
-                    document.getElementById("removeCurrentExtract").style.background = "transparent url(http://supermemory.info/iv/images/icons.png) no-repeat -112px 0";
+                    document.getElementById("removeCurrentExtract").style.background = "transparent url(/images/icons.png) no-repeat -112px 0";
                     // (2) sets [resumevideoat] text input to [stopvideoat]
                     // oResumeAt.value = oStopAt.value;
                     // (3) sets [startvideoat] text input to EXPERIMENTAL Stop - 1 sec.
@@ -528,7 +528,7 @@
                 }
                 sErrMsg += "</p>";
 
-                sErrMsg += "<p class=\"ft\"><a href=\"mailto:bug" + new Date().getFullYear() + "@supermemo.org?subject=YouTube%20Error%20%23" + iErrCode + "&body=Video%3A%20http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D" + document.getElementById("videoid").value + "\"><img src=\"http://supermemory.info/iv/images/transparent.png\" alt=\"Report this error via e-mail\" class=\"imgBtn email\" /></p>";
+                sErrMsg += "<p class=\"ft\"><a href=\"mailto:bug" + new Date().getFullYear() + "@supermemo.org?subject=YouTube%20Error%20%23" + iErrCode + "&body=Video%3A%20http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D" + document.getElementById("videoid").value + "\"><img src=\"/images/transparent.png\" alt=\"Report this error via e-mail\" class=\"imgBtn email\" /></p>";
 
                 document.getElementById("feedbackInner").innerHTML = sErrMsg;
                 document.getElementById("feedbackOuter").style.display = "block";
@@ -713,7 +713,7 @@
                     oExtracts.selectedIndex = oExtracts.options.length - 1;
                 } else {
                     oExtracts.disabled = true;
-                    document.getElementById("removeCurrentExtract").style.background = "transparent url(http://supermemory.info/iv/images/icons.png) no-repeat -96px 0";
+                    document.getElementById("removeCurrentExtract").style.background = "transparent url(/images/icons.png) no-repeat -96px 0";
                 }
             }
 
