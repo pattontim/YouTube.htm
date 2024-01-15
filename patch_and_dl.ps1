@@ -41,11 +41,14 @@ $filePath = "index.html"
 $fileContent = Get-Content -Path $filePath -Raw
 
 # Specify the string to be replaced and the replacement string
-$oldString = "http://supermemory.info/iv/"
+$oldString = "http://supermemory.info/"
+$oldString2 = "/iv/images/"
 $newString = "/"
+$newString2 = "/images/"
 
 # Replace all occurrences of the old string with the new string
 $newContent = $fileContent -replace [regex]::Escape($oldString), $newString
+$newContent = $newContent -replace [regex]::Escape($oldString2), $newString2
 
 # Write the modified content back to the file, overwriting it
 $newContent | Set-Content -Path $filePath

@@ -36,33 +36,33 @@
             sUrlString = buildUrlString();
 
             var xhr = new XMLHttpRequest();
-			xhr.open('GET', sBaseUrl + sUrlString);
+            xhr.open('HEAD', 'https://video.supermemo.org/?', true);
 
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState === 4 && xhr.status === 200) {
-					document.location.href = sBaseUrl + sUrlString;
-				}
-				else if (xhr.readyState === 4 && xhr.status !== 200) {
-					//console.error('Request failed with status: ' + xhr.status); 
-					// TODO direct to default SM youtube template
-                    var xhr2 = new XMLHttpRequest();
-                    xhr2.open('GET', sBaseBackupUrl + sUrlString);
+            var timeoutId = setTimeout(function() {
+                xhr.abort();
+                document.location.href = sBaseBackupUrl + sUrlString
+            }, 10000);
 
-                    xhr2.onreadystatechange = function() {
-                        if (xhr.readyState === 4 && xhr.status === 200) {
-                            document.location.href = sBaseBackupUrl + sUrlString;
-                        } else {
-                            throw new Error("Failed to load backup, are you offline?");
-                        }
-			        };
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    clearTimeout(timeoutId);
+                    if (xhr.status === 200 && xhr.getResponseHeader('Server').indexOf('LiteSpeed') > -1) {
+                        document.location.href = 'https://video.supermemo.org';
+                    } else {
+                        document.location.href = sBaseBackupUrl + sUrlString;
+                    }
+                }
+            };
 
-                    xhr2.send();
-				}
-			};
+            xhr.onerror = function() {
+                document.location.href = sBaseBackupUrl + sUrlString;
+            }
 
-			xhr.send();
-
-            document.location.href = sBaseUrl + sUrlString;
+            try {
+                xhr.send();
+            } catch (e) {
+                document.location.href = sBaseBackupUrl + sUrlString;
+            }
         </script>
     </body>
 </html>
