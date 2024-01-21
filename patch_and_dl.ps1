@@ -44,19 +44,22 @@ $fileContent = Get-Content -Path $filePath -Raw
 
 # Specify the string to be replaced and the replacement string
 $oldString = "http://supermemory.info/"
-$oldString2 = "/iv/images/"
 $newString = "/"
-$newString2 = "/images/"
+$oldString2 = "/iv/images/"
+$newString2 = "/YouTube.htm/images/"
 $oldString3 = "http://yui.yahooapis.com/combo?2.9.0/build/yahoo-dom-event/yahoo-dom-event.js&2.9.0/build/dragdrop/dragdrop-min.js&2.9.0/build/container/container-min.js"
-$newString3 = "/yui_dom_event_v2.9.0_min.js"
+$newString3 = "/YouTube.htm/yui_dom_event_v2.9.0_min.js"
 $oldString4 = "http://yui.yahooapis.com/combo?2.8.0r4/build/container/assets/skins/sam/container.css"
-$newString4 = "/yui_container_v2.8.0r4.css"
+$newString4 = "/YouTube.htm/yui_container_v2.8.0r4.css"
+# $newString5 = "/images/icons.png"
+# $oldString5 = "/YouTube.htm/images/icons.png"
 
 # Replace all occurrences of the old string with the new string
 $newContent = $fileContent -replace [regex]::Escape($oldString), $newString
 $newContent = $newContent -replace [regex]::Escape($oldString2), $newString2
 $newContent = $newContent -replace [regex]::Escape($oldString3), $newString3
 $newContent = $newContent -replace [regex]::Escape($oldString4), $newString4
+# $newContent = $newContent -creplace "(?s)$oldString5", $newString5
 
 # Write the modified content back to the file, overwriting it
 $newContent | Set-Content -Path $filePath

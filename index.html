@@ -168,7 +168,7 @@
 				height: 100%;
 			}
         </style>
-        <link href="/yui_container_v2.8.0r4.css" type="text/css" rel="stylesheet" />
+        <link href="/YouTube.htm/yui_container_v2.8.0r4.css" type="text/css" rel="stylesheet" />
     </head>
     <body class="yui-skin-sam">
         <div id="customPrompt">
@@ -202,10 +202,10 @@
                 <div class="ctrlSubgrp firstCtrlSubgrp">
                     <p>
                         <button type="button" id="mark" onclick="setAt('resume');">Mark</button>
-                        <img src="/images/transparent.png" alt="" id="rewindResume" class="imgBtn rewind" onclick="move('resume', 'rewind');" />
+                        <img src="/YouTube.htm/images/transparent.png" alt="" id="rewindResume" class="imgBtn rewind" onclick="move('resume', 'rewind');" />
 						<input type="text" value="0:00:00" id="resumevideoat" onfocus="this.select();" ondblclick="resetAt('resume');" onchange="this.value = convertDuration2HHMMSS(convertHHMMSS2Duration(this.value));" />
-                        <img src="/images/transparent.png" alt="" id="forwardResume" class="imgBtn forward" onclick="move('resume', 'forward');" />
-						<img src="/images/transparent.png" alt="Restore default" title="Restore default" id="restoreResumeAt" class="imgBtn restoreStartAt" onclick="resetAt('resume');" />
+                        <img src="/YouTube.htm/images/transparent.png" alt="" id="forwardResume" class="imgBtn forward" onclick="move('resume', 'forward');" />
+						<img src="/YouTube.htm/images/transparent.png" alt="Restore default" title="Restore default" id="restoreResumeAt" class="imgBtn restoreStartAt" onclick="resetAt('resume');" />
                         <button type="button" id="resume" onclick="resumeVideo();">Resume</button>
                     </p>
                 </div>
@@ -214,19 +214,19 @@
                 <div class="ctrlSubgrp firstCtrlSubgrp">
                     <p>
                         <button type="button" id="start" onclick="setAt('start');">Start</button>
-                        <img src="/images/transparent.png" alt="" id="rewindStart" class="imgBtn rewind" onclick="move('start', 'rewind');" />
+                        <img src="/YouTube.htm/images/transparent.png" alt="" id="rewindStart" class="imgBtn rewind" onclick="move('start', 'rewind');" />
                         <input type="text" value="0:00:00" id="startvideoat" onfocus="this.select();" onchange="this.value = convertDuration2HHMMSS(convertHHMMSS2Duration(this.value)); document.getElementById('imposeboundries').value = 0; updateBorder(this);" ondblclick="resetAt('start');" />
-                        <img src="/images/transparent.png" alt="" id="forwardStart" class="imgBtn forward" onclick="move('start', 'forward');" />
-                        <img src="/images/transparent.png" alt="Go to" title="Go to" id="goToStart" class="imgBtn goTo" onclick="goTo('start');" />
-                        <img src="/images/transparent.png" alt="Restore default" title="Restore default" id="restoreStartAt" class="imgBtn restoreStartAt" onclick="resetAt('start');" />
+                        <img src="/YouTube.htm/images/transparent.png" alt="" id="forwardStart" class="imgBtn forward" onclick="move('start', 'forward');" />
+                        <img src="/YouTube.htm/images/transparent.png" alt="Go to" title="Go to" id="goToStart" class="imgBtn goTo" onclick="goTo('start');" />
+                        <img src="/YouTube.htm/images/transparent.png" alt="Restore default" title="Restore default" id="restoreStartAt" class="imgBtn restoreStartAt" onclick="resetAt('start');" />
                     </p>
                     <p>
                         <button type="button" id="stop" onclick="setAt('stop');">Stop</button>
-                        <img src="/images/transparent.png" alt="" id="rewindStop" class="imgBtn rewind" onclick="move('stop', 'rewind');" />
+                        <img src="/YouTube.htm/images/transparent.png" alt="" id="rewindStop" class="imgBtn rewind" onclick="move('stop', 'rewind');" />
                         <input type="text" value="0:00:00" id="stopvideoat" onfocus="this.select();" onchange="this.value = convertDuration2HHMMSS(convertHHMMSS2Duration(this.value)); document.getElementById('imposeboundries').value = 0; updateBorder(this);" ondblclick="resetAt('stop');" />
-                        <img src="/images/transparent.png" alt="" id="forwardStop" class="imgBtn forward" onclick="move('stop', 'forward');" />
-                        <img src="/images/transparent.png" alt="Go to" title="Go to" id="goToStop" class="imgBtn goTo" onclick="goTo('stop');" />
-                        <img src="/images/transparent.png" alt="Restore default" title="Restore default" id="restoreStopAt" class="imgBtn restoreStopAt" onclick="resetAt('stop');" />
+                        <img src="/YouTube.htm/images/transparent.png" alt="" id="forwardStop" class="imgBtn forward" onclick="move('stop', 'forward');" />
+                        <img src="/YouTube.htm/images/transparent.png" alt="Go to" title="Go to" id="goToStop" class="imgBtn goTo" onclick="goTo('stop');" />
+                        <img src="/YouTube.htm/images/transparent.png" alt="Restore default" title="Restore default" id="restoreStopAt" class="imgBtn restoreStopAt" onclick="resetAt('stop');" />
                     </p>
                 </div>
                 <div class="ctrlSubgrp repeat">
@@ -249,7 +249,7 @@
                     <p>
                         <button type="button" id="extract" onclick="addExtract();">Extract</button>
                         <select id="extracts" onchange="feedCurrentExtract();" onclick="feedCurrentExtract();"></select>
-                        <img src="/images/transparent.png" alt="Remove the currently selected extract" id="removeCurrentExtract" class="imgBtn removeCurrentExtract" onclick="removeCurrentExtract();" />
+                        <img src="/YouTube.htm/images/transparent.png" alt="Remove the currently selected extract" id="removeCurrentExtract" class="imgBtn removeCurrentExtract" onclick="removeCurrentExtract();" />
                     </p>
                 </div>
             </div>
@@ -263,7 +263,7 @@
             </div>
 			<input type="hidden" value="0" id="customPromptVisible" />
         </fieldset>
-        <script type="text/javascript" src="/yui_dom_event_v2.9.0_min.js"></script>
+        <script type="text/javascript" src="/YouTube.htm/yui_dom_event_v2.9.0_min.js"></script>
         <!-- <script src="http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js" type="text/javascript"></script> -->
         <script type="text/javascript">
             var fOK = function (e) {
@@ -528,7 +528,7 @@
                 }
                 sErrMsg += "</p>";
 
-                sErrMsg += "<p class=\"ft\"><a href=\"mailto:bug" + new Date().getFullYear() + "@supermemo.org?subject=YouTube%20Error%20%23" + iErrCode + "&body=Video%3A%20http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D" + document.getElementById("videoid").value + "\"><img src=\"/images/transparent.png\" alt=\"Report this error via e-mail\" class=\"imgBtn email\" /></p>";
+                sErrMsg += "<p class=\"ft\"><a href=\"mailto:bug" + new Date().getFullYear() + "@supermemo.org?subject=YouTube%20Error%20%23" + iErrCode + "&body=Video%3A%20http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D" + document.getElementById("videoid").value + "\"><img src=\"/YouTube.htm/images/transparent.png\" alt=\"Report this error via e-mail\" class=\"imgBtn email\" /></p>";
 
                 document.getElementById("feedbackInner").innerHTML = sErrMsg;
                 document.getElementById("feedbackOuter").style.display = "block";
