@@ -9,7 +9,13 @@ SM 18/19:
 
 - Replace YouTube.htm in <SuperMemo_install_folder>/bin with YouTube.htm from this repo.
 
-Fork this repo, change sBaseBackupUrl to host your own. Run script to generate files locally.
+Want to host your own?:  
+
+- Fork this repo. Run patch_and_dl.ps1 to generate files locally, commit and publish to github pages. Change sBaseBackupUrl to host your own.
+
+## Troubleshooting/Sec warnings
+
+If you get annoying Security warnings every time, change in SuperMemo/bin/YouTube.htm the varable titled "HEADER TIMEOUT" value to 1. This will always use GitHub pages and not load from the supermemo server.
 
 ## Looking for more? 
 

@@ -12,6 +12,7 @@
         <input type="text" value="0:00:00" id="startvideoat" onfocus="this.select();" onchange="this.value = convertDuration2HHMMSS(convertHHMMSS2Duration(this.value)); document.getElementById('imposeboundries').value = 0; updateBorder(this);" ondblclick="resetAt('start');" />
         <input type="text" value="0:00:00" id="stopvideoat" onfocus="this.select();" onchange="this.value = convertDuration2HHMMSS(convertHHMMSS2Duration(this.value)); document.getElementById('imposeboundries').value = 0; updateBorder(this);" ondblclick="resetAt('stop');" />
         <script type="text/javascript">
+            var HEADER_TIMEOUT = 2000;
             var buildUrlString = function() {
                 var urlString = "",
                 oTs = new Date(),
@@ -36,12 +37,12 @@
             sUrlString = buildUrlString();
 
             var xhr = new XMLHttpRequest();
-            xhr.open('HEAD', 'https://video.supermemo.org/?', true);
+            xhr.open('HEAD', 'https://youtube.supermemo.org/?', true);
 
             var timeoutId = setTimeout(function() {
                 xhr.abort();
                 document.location.href = sBaseBackupUrl + sUrlString
-            }, 2000);
+            }, HEADER_TIMEOUT);
 
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
