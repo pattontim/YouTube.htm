@@ -51,7 +51,7 @@ $oldString3 = "http://yui.yahooapis.com/combo?2.9.0/build/yahoo-dom-event/yahoo-
 $newString3 = "/YouTube.htm/yui_dom_event_v2.9.0_min.js"
 $oldString4 = "http://yui.yahooapis.com/combo?2.8.0r4/build/container/assets/skins/sam/container.css"
 $newString4 = "/YouTube.htm/yui_container_v2.8.0r4.css"
-# $newString5 = "/images/icons.png"
+# $newString5 = '/images/icons\.png'
 # $oldString5 = "/YouTube.htm/images/icons.png"
 
 # Replace all occurrences of the old string with the new string
@@ -59,9 +59,21 @@ $newContent = $fileContent -replace [regex]::Escape($oldString), $newString
 $newContent = $newContent -replace [regex]::Escape($oldString2), $newString2
 $newContent = $newContent -replace [regex]::Escape($oldString3), $newString3
 $newContent = $newContent -replace [regex]::Escape($oldString4), $newString4
-# $newContent = $newContent -creplace "(?s)$oldString5", $newString5
+# patch Date: Dec 19, 2023
+$newContent = $newContent -replace 'Date: Dec 19, 2023', 'Date: Dec 19, 2023 (GITHUB FALLBACK)'
 
 # Write the modified content back to the file, overwriting it
+$newContent | Set-Content -Path $filePath
+
+$newContent = @()
+
+foreach ($line in Get-Content -Path $filePath) {
+    $newLine = $line -replace '/images/icons\.png', '/YouTube.htm/images/icons.png'
+    $newContent += $newLine
+}
+
+$newContent = $newContent -replace '/YouTube.htm/YouTube.htm/', '/YouTube.htm/'
+
 $newContent | Set-Content -Path $filePath
 
 Write-Host "String replaced in $filePath"
