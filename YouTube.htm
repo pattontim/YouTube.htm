@@ -41,13 +41,13 @@
             var timeoutId = setTimeout(function() {
                 xhr.abort();
                 document.location.href = sBaseBackupUrl + sUrlString
-            }, 10000);
+            }, 2000);
 
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
                     clearTimeout(timeoutId);
                     if (xhr.status === 200 && xhr.getResponseHeader('Server').indexOf('LiteSpeed') > -1) {
-                        document.location.href = 'https://video.supermemo.org';
+                        document.location.href = sBaseUrl + sUrlString;
                     } else {
                         document.location.href = sBaseBackupUrl + sUrlString;
                     }
