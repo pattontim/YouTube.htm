@@ -171,6 +171,22 @@
         <link href="/YouTube.htm/yui_container_v2.8.0r4.css" type="text/css" rel="stylesheet" />
     </head>
     <body class="yui-skin-sam">
+<script>
+window.addEventListener("load", function() {
+setTimeout(function() {
+// document.querySelectorAll(".debug")[0].innerText += " " + document.querySelectorAll("#www-widgetapi-script")[0].src.replace("https://www.youtube.com/s/","").replace("/www-widgetapi.vflset/www-widgetapi.js","");
+// must be safe for IE11, so no optional chaining or modern syntax
+var debugElements = document.querySelectorAll(".debug");
+var widgetApiScripts = document.querySelectorAll("#www-widgetapi-script");
+if (debugElements.length > 0 && widgetApiScripts.length > 0) {
+var debugElement = debugElements[0];
+var widgetApiScript = widgetApiScripts[0];
+var playerId = widgetApiScript.src.replace("https://www.youtube.com/s/","").replace("/www-widgetapi.vflset/www-widgetapi.js","");
+debugElement.innerText += " " + playerId;
+}
+}, 10000);
+});
+</script>
         <div id="customPrompt">
             <div class="hd">Save As</div>
             <div class="bd">

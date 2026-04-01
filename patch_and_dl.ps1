@@ -7,6 +7,30 @@ Invoke-WebRequest -Uri 'http://yui.yahooapis.com/combo?2.8.0r4/build/container/a
 # Specify the base URL
 $baseUrl = 'https://youtube.supermemo.org/'
 
+
+# <script> additions
+# 1. a few sec after page load add player id by inserting after (safe for IE11)     </head>  document.querySelectorAll(".debug")[0].innerText += document.querySelectorAll("#www-widgetapi-script")[0].src.replace("https://www.youtube.com/s/","").replace("/www-widgetapi.vflset/www-widgetapi.js","");
+# Keep your existing ytDebugScript definition exactly as it was:
+$ytDebugScript = @"
+<body class="yui-skin-sam">
+<script>
+window.addEventListener("load", function() {
+setTimeout(function() {
+// document.querySelectorAll(".debug")[0].innerText += " " + document.querySelectorAll("#www-widgetapi-script")[0].src.replace("https://www.youtube.com/s/","").replace("/www-widgetapi.vflset/www-widgetapi.js","");
+// must be safe for IE11, so no optional chaining or modern syntax
+var debugElements = document.querySelectorAll(".debug");
+var widgetApiScripts = document.querySelectorAll("#www-widgetapi-script");
+if (debugElements.length > 0 && widgetApiScripts.length > 0) {
+var debugElement = debugElements[0];
+var widgetApiScript = widgetApiScripts[0];
+var playerId = widgetApiScript.src.replace("https://www.youtube.com/s/","").replace("/www-widgetapi.vflset/www-widgetapi.js","");
+debugElement.innerText += " " + playerId;
+}
+}, 10000);
+});
+</script>
+"@
+
 # Specify the files to download
 $fileUrls = @(
     '/images/transparent.png',
@@ -42,6 +66,12 @@ $filePath = "index.html"
 # Read the content of the file
 $fileContent = Get-Content -Path $filePath -Raw
 
+# validations
+if ($fileContent -notmatch "player") {
+    Write-Host "The content of index.htm is not as expected."
+    exit
+}
+
 # Specify the string to be replaced and the replacement string
 $oldString = "http://supermemory.info/"
 $newString = "/"
@@ -61,6 +91,12 @@ $newContent = $newContent -replace [regex]::Escape($oldString3), $newString3
 $newContent = $newContent -replace [regex]::Escape($oldString4), $newString4
 # patch Date: Dec 19, 2023
 $newContent = $newContent -replace 'Date: Dec 19, 2023', 'Date: Dec 19, 2023 (GITHUB FALLBACK)'
+
+# <script> additions
+# 1. a few sec after page load add player id by inserting after (safe for IE11) <body> elem document.querySelectorAll(".debug")[0].innerText += document.querySelectorAll("#www-widgetapi-script")[0].src.replace("https://www.youtube.com/s/","").replace("/www-widgetapi.vflset/www-widgetapi.js","");
+# $newContent = $newContent -replace '</head>', '</head><script>window.addEventListener("load", function() { setTimeout(function() { document.querySelectorAll(".debug")[0].innerText += " " + document.querySelectorAll("#www-widgetapi-script")[0].src.replace("https://www.youtube.com/s/","").replace("/www-widgetapi.vflset/www-widgetapi.js",""); }, 10000); });</script>'
+$newContent = $newContent -replace '<body class="yui-skin-sam">', $ytDebugScript
+
 
 # Write the modified content back to the file, overwriting it
 $newContent | Set-Content -Path $filePath
